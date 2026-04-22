@@ -1,8 +1,14 @@
 import 'dotenv/config';
 import { env } from './config/env';
 import fastify from 'fastify';
+import cors from "@fastify/cors";
 
 const server = fastify({logger: true})
+
+server.register(cors, {
+  origin: "*",
+  methods: ["GET"]
+})
 
 interface Driver {
   driverId: number
